@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Mobile Parallax Scrolling</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css">
+    <style>
+    body {
+        overflow-x: hidden;
+    }
+    
+    h1 {
+        padding: 20px;
+        margin: 0;
+    }
+    
+    p {
+        padding: 20px;
+        font-size: 2em;
+        margin: 0;
+    }
+    
+    .content {
+        max-width: 1440px;
+        margin: auto;
+    }
+    
+    @media screen and (min-width: 768px) {
+        .example-content2 {
+            width: 50%;
+        }
+    }
+    
+    .example-content {
+        font-size: 10em;
+        background-color: red;
+        text-align: center;
+    }
+    /* 
+    =========================================================
+    Change the style (with namespace "st-" only if there
+    are changes in the sticky tablet functionalities
+    =========================================================
+    */
+    
+    #st-tablet {
+        /* the top position is determined by javascript */
+        position: absolute;
+        /* Display none in case the user is not running JS */
+        left: 53%;
+        transition: left 0.5s;
+        display: none;
+    }
+    
+    @media screen and (min-width: 768px) {
+        #st-tablet {
+            display: block;
+        }
+    }
+    
+    #st-tablet.no-js {
+        left: 100%;
+    }
+    
+    #st-tablet.sticky {
+        /* the top position is determined by javascript */
+        position: fixed;
+    }
+    
+    #st-tabletSections {
+        /* This is the inner part of the tablet */
+        position: absolute;
+        width: 232px;
+        height: 410px;
+        top: 116px;
+        left: 114px;
+        overflow: hidden;
+    }
+    
+    #st-tabletSections > div {
+        position: absolute;
+        height: 100%;
+        width: 100%;
+    }
+    
+    #st-tabletSections.st-smooth > div {
+        transition: transform 0.5s;
+    }
+    
+    .st-above {
+        transform: translateY(-410px);
+    }
+    
+    .st-.middle {
+        transform: translateY(0px);
+    }
+    
+    .st-below {
+        transform: translateY(410px);
+    }
+    </style>
+</head>
+
+<body>
+    <div class="content">
+        <div style="background-color: green; color: white;">
+            <h1>Header</h1>
+            <p>
+                Nel mezzo del cammin di nostra vita mi ritrovai per una selva oscura, ché la diritta via era smarrita. Ahi quanto a dir qual era è cosa dura esta selva selvaggia e aspra e forte che nel pensier rinova la paura! Tant' è amara che poco è più morte; ma per trattar del ben ch'i' vi trovai, dirò de l'altre cose ch'i' v'ho scorte. Io non so ben ridir com' i' v'intrai, tant' era pien di sonno a quel punto che la verace via abbandonai.
+            </p>
+        </div>
+        <div class="st-section" style="background-color: yellow; position: relative">
+            <h1>Section 1</h1>
+            <p class="example-content2">
+                Ma poi ch'i' fui al piè d'un colle giunto, là dove terminava quella valle che m'avea di paura il cor compunto, guardai in alto e vidi le sue spalle vestite già de' raggi del pianeta che mena dritto altrui per ogne calle. Allor fu la paura un poco queta, che nel lago del cor m'era durata la notte ch'i' passai con tanta pieta. E come quei che con lena affannata, uscito fuor del pelago a la riva, si volge a l'acqua perigliosa e guata, così l'animo mio, ch'ancor fuggiva, si volse a retro a rimirar lo passo che non lasciò già mai persona viva. Poi ch'èi posato un poco il corpo lasso, ripresi via per la piaggia diserta, sì che 'l piè fermo sempre era 'l più basso. Ed ecco, quasi al cominciar de l'erta, una lonza leggiera e presta molto, che di pel macolato era coverta; e non mi si partia dinanzi al volto, anzi 'mpediva tanto il mio cammino, ch'i' fui per ritornar più volte vòlto.
+            </p>
+        </div>
+        <div class="st-section" style="background-color: gold;">
+            <h1>Section 2</h1>
+            <p class="example-content2">
+                Temp' era dal principio del mattino, e 'l sol montava 'n sù con quelle stelle ch'eran con lui quando l'amor divino mosse di prima quelle cose belle; sì ch'a bene sperar m'era cagione di quella fiera a la gaetta pelle
+            </p>
+        </div>
+        <div class="st-section" style="background-color: pink;">
+            <h1>Section 3</h1>
+            <p class="example-content2">
+                l'ora del tempo e la dolce stagione; ma non sì che paura non mi desse la vista che m'apparve d'un leone. Questi parea che contra me venisse con la test' alta e con rabbiosa fame, sì che parea che l'aere ne tremesse. Ed una lupa, che di tutte brame sembiava carca ne la sua magrezza, e molte genti fé già viver grame, questa mi porse tanto di gravezza con la paura ch'uscia di sua vista, ch'io perdei la speranza de l'altezza. E qual è quei che volontieri acquista, e giugne 'l tempo che perder lo face, che 'n tutti suoi pensier piange e s'attrista; tal mi fece la bestia sanza pace, che, venendomi 'ncontro, a poco a poco mi ripigneva là dove 'l sol tace. Mentre ch'i' rovinava in basso loco, dinanzi a li occhi mi si fu offerto chi per lungo silenzio parea fioco.
+            </p>
+        </div>
+        <div class="st-section" style="background-color: yellow;">
+            <h1>Section 4</h1>
+            <p class="example-content2">
+                l'ora del tempo e la dolce stagione; ma non sì che paura non mi desse la vista che m'apparve d'un leone. Questi parea che contra me venisse con la test' alta e con rabbiosa fame, sì che parea che l'aere ne tremesse. Ed una lupa, che di tutte brame sembiava carca ne la sua magrezza, e molte genti fé già viver grame, questa mi porse tanto di gravezza con la paura ch'uscia di sua vista, ch'io perdei la speranza de l'altezza. E qual è quei che volontieri acquista, e giugne 'l tempo che perder lo face, che 'n tutti suoi pensier piange e s'attrista; tal mi fece la bestia sanza pace, che, venendomi 'ncontro, a poco a poco mi ripigneva là dove 'l sol tace. Mentre ch'i' rovinava in basso loco, dinanzi a li occhi mi si fu offerto chi per lungo silenzio parea fioco.
+            </p>
+        </div>
+        <div style="background-color: #ddd;">
+            <h1>Not really a section</h1>
+            <p class="example-content2">
+                l'ora del tempo e la dolce stagione; ma non sì che paura non mi desse la vista che m'apparve d'un leone. Questi parea che contra me venisse con la test' alta e con rabbiosa fame, sì che parea che l'aere ne tremesse. Ed una lupa, che di tutte brame sembiava carca ne la sua magrezza, e molte genti fé già viver grame, questa mi porse tanto di gravezza con la paura ch'uscia di sua vista, ch'io perdei la speranza de l'altezza. E qual è quei che volontieri acquista, e giugne 'l tempo che perder lo face, che 'n tutti suoi pensier piange e s'attrista; tal mi fece la bestia sanza pace, che, venendomi 'ncontro, a poco a poco mi ripigneva là dove 'l sol tace. Mentre ch'i' rovinava in basso loco, dinanzi a li occhi mi si fu offerto chi per lungo silenzio parea fioco.
+            </p>
+        </div>
+        <div class="st-section" style="background-color: gold;">
+            <h1>Section 5</h1>
+            <p class="example-content2">
+                l'ora del tempo e la dolce stagione; ma non sì che paura non mi desse la vista che m'apparve d'un leone. Questi parea che contra me venisse con la test' alta e con rabbiosa fame, sì che parea che l'aere ne tremesse. Ed una lupa, che di tutte brame sembiava carca ne la sua magrezza, e molte genti fé già viver grame, questa mi porse tanto di gravezza con la paura ch'uscia di sua vista, ch'io perdei la speranza de l'altezza. E qual è quei che volontieri acquista, e giugne 'l tempo che perder lo face, che 'n tutti suoi pensier piange e s'attrista; tal mi fece la bestia sanza pace, che, venendomi 'ncontro, a poco a poco mi ripigneva là dove 'l sol tace. Mentre ch'i' rovinava in basso loco, dinanzi a li occhi mi si fu offerto chi per lungo silenzio parea fioco. l'ora del tempo e la dolce stagione; ma non sì che paura non mi desse la vista che m'apparve d'un leone. Questi parea che contra me venisse con la test' alta e con rabbiosa fame, sì che parea che l'aere ne tremesse. Ed una lupa, che di tutte brame sembiava carca ne la sua magrezza, e molte genti fé già viver grame, questa mi porse tanto di gravezza con la paura ch'uscia di sua vista, ch'io perdei la speranza de l'altezza. E qual è quei che volontieri acquista, e giugne 'l tempo che perder lo face, che 'n tutti suoi pensier piange e s'attrista; tal mi fece la bestia sanza pace, che, venendomi 'ncontro, a poco a poco mi ripigneva là dove 'l sol tace. Mentre ch'i' rovinava in basso loco, dinanzi a li occhi mi si fu offerto chi per lungo silenzio parea fioco.
+            </p>
+        </div>
+        <div style="background-color: green; color: white; height: 1200px">
+            <h1>Footer</h1>
+            <p>
+                Nel mezzo del cammin di nostra vita mi ritrovai per una selva oscura, ché la diritta via era smarrita. Ahi quanto a dir qual era è cosa dura esta selva selvaggia e aspra e forte che nel pensier rinova la paura! Tant' è amara che poco è più morte; ma per trattar del ben ch'i' vi trovai, dirò de l'altre cose ch'i' v'ho scorte. Io non so ben ridir com' i' v'intrai, tant' era pien di sonno a quel punto che la verace via abbandonai.
+            </p>
+        </div>
+        <div id="st-tablet" class="no-js">
+            <img src="mobile.png">
+            <div id="st-tabletSections">
+                <div class="example-content" style="background-color: yellow">1</div>
+                <div class="example-content" style="background-color: gold">2</div>
+                <div class="example-content" style="background-color: pink">3</div>
+                <div class="example-content" style="background-color: yellow">4</div>
+                <div class="example-content" style="background-color: gold">5</div>
+            </div>
+        </div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/waypoints/4.0.1/noframework.waypoints.min.js"></script>
+    <script>
+    window.凸 = window.凸 || {};
+    window.凸.Parallax = (function() {
+        var offsetTablet = 65;
+        var offsetTabletContentFlipping = 200;
+        var fixedHeaderHeight = 0;
+        var sections;
+        var tabletSections;
+        var stickyTabletElement;
+        var waypoints = [];
+        var positions;
+        var offsets;
+        var resizeTimeout;
+        var state;
+        var i;
+        var numberOfSections;
+        var showElement = function(elementNumber) {
+            var e;
+            if (elementNumber >= 0) {
+                for (var i = 0; i < tabletSections.length; i++) {
+                    e = tabletSections[i];
+                    e.classList.remove('st-above', 'st-middle', 'st-below');
+                    if (i < elementNumber) {
+                        e.classList.add('st-above');
+                    } else if (i === elementNumber) {
+                        e.classList.add('st-middle');
+                    } else {
+                        e.classList.add('st-below');
+                    }
+                }
+            }
+        };
+        var changeShowingElementInTablet = function(direction) {
+            // Dirty way to get the index of the element, this is
+            // coming from waypoints plugin
+            var i = parseInt(this.key.match(/waypoint-(.*)/)[1]) % numberOfSections;
+            if (direction === "up") {
+                showElement(i - 1);
+            } else {
+                showElement(i);
+            }
+        };
+        var makeTabletSticky = function() {
+            state = "sticky";
+            stickyTabletElement.classList.add('sticky');
+            stickyTabletElement.style.top = (offsetTablet + fixedHeaderHeight) + "px";
+        };
+        var makeTabletConnectToFirstSection = function() {
+            state = "first";
+            stickyTabletElement.classList.remove('sticky');
+            stickyTabletElement.style.top = offsets.firstElement + "px";
+        };
+        var makeTabletConnectToLastSection = function() {
+            state = "last";
+            stickyTabletElement.classList.remove('sticky');
+            stickyTabletElement.style.top = offsets.lastElement + "px";
+        };
+        var transactionHeaderSticky = function(direction) {
+            if (direction === "up") {
+                makeTabletConnectToFirstSection();
+            } else {
+                makeTabletSticky();
+            }
+        };
+        var transactionFooterSticky = function(direction) {
+            if (direction === "up") {
+                makeTabletSticky();
+            } else {
+                makeTabletConnectToLastSection();
+            }
+        };
+        var resizeThrottler = function() {
+            if (!resizeTimeout) {
+                resizeTimeout = setTimeout(function() {
+                    resizeTimeout = null;
+                    actualResizeHandler();
+                }, 500);
+            }
+        };
+        var actualResizeHandler = function() {
+            setPositionsAndOffsets();
+        };
+        var setPositionsAndOffsets = function() {
+            positions = {
+                body: document.body.getBoundingClientRect(),
+                firstElement: sections[0].getBoundingClientRect(),
+                lastElement: sections[sections.length - 1].getBoundingClientRect()
+            };
+            offsets = {
+                firstElement: positions.firstElement.top - positions.body.top + offsetTablet,
+                lastElement: positions.lastElement.top - positions.body.top + offsetTablet
+            };
+            if (state === "first") {
+                stickyTabletElement.style.top = offsets.firstElement + "px";
+            } else if (state === "last") {
+                stickyTabletElement.style.top = offsets.lastElement + "px";
+            }
+        };
+
+        var main = function() {
+            sections = document.getElementsByClassName("st-section");
+            tabletSections = document.getElementById("st-tabletSections").children;
+            stickyTabletElement = document.getElementById("st-tablet");
+            numberOfSections = sections.length + 2;
+            state = "first";
+            waypoints.map(function(waypoint) {
+                waypoint.destroy();
+            });
+            waypoints = [];
+            for (i = 0; i < sections.length; i++) {
+                waypoints.push(new Waypoint({
+                    element: sections[i],
+                    handler: changeShowingElementInTablet,
+                    offset: offsetTabletContentFlipping,
+                }));
+            }
+            waypoints.push(new Waypoint({
+                element: sections[0],
+                handler: transactionHeaderSticky,
+                offset: 0,
+            }));
+            waypoints.push(new Waypoint({
+                element: sections[sections.length - 1],
+                handler: transactionFooterSticky,
+                offset: 0,
+            }));
+            window.addEventListener("resize", resizeThrottler, false);
+            setPositionsAndOffsets();
+            stickyTabletElement.style.top = offsets.firstElement + "px";
+            showElement(0);
+            stickyTabletElement.classList.remove('no-js');
+            setTimeout(function() {
+                document.getElementById("st-tabletSections").classList.add('st-smooth');
+            }, 500);
+        };
+        return {
+            main: main
+        };
+    }());
+    凸.Parallax.main();
+    </script>
+</body>
+
+</html>
